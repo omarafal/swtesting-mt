@@ -1,0 +1,154 @@
+#loginBtn {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-color:white;
+    -fx-border-radius: 10px;
+}
+#loginBtn:hover {
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-border-color:white;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.menuBtn{
+    -fx-text-fill:white;
+    -fx-background-color:transparent;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.menuBtn:hover{
+    -fx-text-fill:lightgrey;
+}
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: lightslategrey ;
+    -fx-background-radius:10;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: gainsboro ;
+    -fx-text-fill: white;
+    -fx-background-radius:10;
+}
+.list-cell:filled {
+    -fx-text-fill: white;
+    -fx-background-radius:10;
+}
+.close:hover{
+    -fx-fill:rgb(232,17,35);
+}
+.minimize:hover{
+    -fx-fill:rgb(229,229,229);
+}
+.ButtonG{
+    -fx-background-radius:7;
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-cursor:hand;
+    -fx-font-size:18;
+    -fx-background-color: limegreen;
+}
+.ButtonG:hover{
+    -fx-background-color: derive(limegreen, -10%);
+}
+.ButtonG:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.ButtonR{
+    -fx-background-radius:7;
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-cursor:hand;
+    -fx-font-size:18;
+    -fx-background-color: crimson;
+}
+.ButtonR:hover{
+    -fx-background-color: derive(crimson, -10%);
+}
+.ButtonR:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.ButtonY{
+    -fx-background-radius:7;
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-cursor:hand;
+    -fx-font-size:18;
+    -fx-background-color: #FFC107;
+}
+.ButtonY:hover{
+    -fx-background-color: derive(#FFC107, -10%);
+}
+.ButtonY:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.orderBtn1{
+    -fx-background-radius: 20;
+    -fx-cursor:hand;
+    -fx-font-weight: bold;
+    -fx-font-size:18;
+    -fx-background-color:#99ff33;
+}
+.orderBtn1:hover{
+    -fx-background-color: derive(#99ff33, -10%);
+}
+.orderBtn1:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.orderBtn2{
+    -fx-background-radius: 20;
+    -fx-cursor:hand;
+    -fx-font-weight: bold;
+    -fx-font-size:18;
+    -fx-background-color:#ff4c33;
+}
+.orderBtn2:hover{
+    -fx-background-color: derive(#ff4c33, -20%);
+}
+.orderBtn2:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.settingsBtn{
+    -fx-cursor:hand;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 22px;
+}
+.jfx-check-box > .box {
+    -fx-padding: 10px;
+}
+.jfx-check-box .box,
+.jfx-check-box:indeterminate .box,
+.jfx-check-box:indeterminate:selected .box{
+    -fx-pref-width: 24;
+    -fx-pref-height: 24;
+}
+.jfx-combo-box{
+    -fx-font-size:20;
+    -fx-font-weight:bold;
+}
+.jfx-combo-box-popup{
+    -fx-background-color:black;
+    -fx-selection-bar:black;
+}
+.jfx-combo-box .list-cell:filled:hover {
+    -fx-background-color: gainsboro ;
+    -fx-text-fill: black;
+    -fx-background-radius:10;
+}
+.jfx-combo-box .list-cell:filled {
+    -fx-text-fill: black;
+    -fx-background-radius:10;
+}
+.jfx-combo-box .list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: lightgrey ;
+    -fx-background-radius:10;
+    -fx-text-fill: black;
+}
+.emptyField{
+    -fx-border-color:red;
+}
+.selected{
+    -fx-border-color:white;
+    -fx-border-width:2;
+}

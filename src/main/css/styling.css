@@ -1,0 +1,21 @@
+/* CSS for JavaFX Modern Profile Button */
+
+.profile-button {
+    -fx-background-color: #3f9cff; /* Relaxed blue */
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-cursor: hand; /* Cursor style */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0); /* Drop shadow effect */
+}
+
+.profile-button:hover {
+    -fx-background-color: #3788e0; /* Darker blue on hover */
+}
+
+/* CSS for JavaFX Gradient Background */
+
+.left-menu {
+    -fx-background-color: linear-gradient(to bottom, #3f9cff, #3788e0); /* Blue gradient */
+}
