@@ -14,8 +14,29 @@
     -fx-background-color: #3788e0; /* Darker blue on hover */
 }
 
+.two-buttons{
+    -fx-background-color: #3f9cff; /* Relaxed blue */
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 10px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-cursor: hand; /* Cursor style */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0); /* Drop shadow effect */
+}
+
+.two-buttons:hover {
+    -fx-background-color: #3788e0; /* Darker blue on hover */
+}
+
 /* CSS for JavaFX Gradient Background */
 
 .left-menu {
     -fx-background-color: linear-gradient(to bottom, #3f9cff, #3788e0); /* Blue gradient */
+}
+
+.round-button {
+    -fx-background-color: #007bff; /* Blue background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-background-radius: 70; /* Border radius to make it round */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1.5), 5, 0, 0, 0);
 }

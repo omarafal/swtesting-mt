@@ -1,3 +1,7 @@
-Name:Password:Address:Number
-Omar Ashraf:pass123:5 Nasr Street, Cairo:01145276996
-Ahmad Test:ssdf33:s:s
+username;userID;password;address;number;isAdmin
+a;0;a;a;12;true
+Omar Ashraf;243;pass123;5 Nasr Street, Cairo;01145276996;true
+Ahmad Test;444;ssdf33;s;87546846;false
+New Guy;88;cannotguessmypass123;Saraya Al Qobba;456464654;false
+New Guy;88;cannotguessmypass123;Saraya Al Qobba;456464654;false
+New Guy;88;cannotguessmypass123;Saraya Al Qobba;456464654;false

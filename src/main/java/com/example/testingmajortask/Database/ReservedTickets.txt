@@ -1,0 +1,6 @@
+a;Los Angeles;LA456;LA456_T:2;Economy Class;250
+a;New York;NY123;NY123_T:75;First Class;300
+a;New York;NY123;NY123_T:0;Economy Class;200
+a;Paris;PR345;PR345_T:80;First Class;500
+a;Tokyo;TK012;TK012_T:85;First Class;450
+a;Sinai;F9872F;F9872F_T:8;Business Class;300

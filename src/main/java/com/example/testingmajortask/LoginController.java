@@ -62,7 +62,9 @@ public class LoginController {
 
     @FXML
     protected void logIn() throws IOException {
-        if(User.validate(usernameField.getText(), passwordField.getText(), passwordShown.getText())){
+        String password = passwordShown.getText().trim().isEmpty() ? passwordField.getText() : passwordShown.getText();
+
+        if(User.loginUser(usernameField.getText(), password) != -1){
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
             Scene mainScene = new Scene(root, 1131, 610);
             Stage window = (Stage)(loginBtn.getScene().getWindow());

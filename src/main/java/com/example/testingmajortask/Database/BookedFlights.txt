@@ -1,3 +1,0 @@
-Name:Destination:Date:RegisterDate:Price
-Omar Ashraf:Toronto:15/08/2024:15/04/2024:247
-Omar Ashraf:Moscow:25/12/2024:15/04/2024:500

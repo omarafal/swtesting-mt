@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1131.0" snapToPixel="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingmajortask.MainController">
-   <VBox fx:id="sidePane" alignment="BOTTOM_CENTER" prefHeight="610.0" prefWidth="186.0" styleClass="left-menu" stylesheets="@../../../../css/styling.css" visible="false" BorderPane.alignment="CENTER">
+   <VBox fx:id="sidePane" alignment="BOTTOM_CENTER" prefHeight="610.0" prefWidth="186.0" styleClass="left-menu" stylesheets="@../../../../css/styling.css" BorderPane.alignment="CENTER">
       <children>
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
             <children>
@@ -55,20 +56,34 @@
          </VBox>
          <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
             <children>
+               <Button fx:id="adminFlightsBtn" mnemonicParsing="false" onAction="#onAdminFlightsBtnClicked" prefWidth="160.0" styleClass="profile-button" text="Admin Flights" visible="false">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../../icons/setting.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                  <children>
+                     <Button mnemonicParsing="false" onAction="#onReservedBtnClicked" styleClass="two-buttons" stylesheets="@../../../../css/styling.css" text="Reserved">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Button>
+                     <Button mnemonicParsing="false" onAction="#onBookedBtnClicked" styleClass="two-buttons" stylesheets="@../../../../css/styling.css" text="Booked">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Button>
+                  </children>
+               </HBox>
                <Button mnemonicParsing="false" onAction="#onFlightsBtnClicked" prefHeight="40.0" prefWidth="160.0" styleClass="profile-button" stylesheets="@../../../../css/styling.css" text="Flights">
                   <graphic>
                      <ImageView fitHeight="15.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../../../../icons/airplane.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Button>
-               <Button mnemonicParsing="false" onAction="#onProfileBtnClicked" prefHeight="40.0" prefWidth="160.0" styleClass="profile-button" stylesheets="@../../../../css/styling.css" text="Profile">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../../../icons/profile.png" />
                         </image>
                      </ImageView>
                   </graphic>
@@ -80,7 +95,7 @@
          </VBox>
       </children>
    </VBox>
-   <Pane layoutX="186.0" prefHeight="610.0" prefWidth="945.0" visible="false" BorderPane.alignment="CENTER">
+   <Pane layoutX="186.0" prefHeight="610.0" prefWidth="945.0" BorderPane.alignment="CENTER">
       <children>
          <VBox fx:id="defaultPane" alignment="CENTER" prefHeight="610.0" prefWidth="945.0">
             <children>
@@ -110,46 +125,34 @@
                      </Button>
                   </children>
                </HBox>
-               <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="945.0" spacing="100.0">
+               <AnchorPane prefHeight="42.0" prefWidth="945.0">
                   <children>
-                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="106.0" text="Destination">
+                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="21.0" prefWidth="97.0" text="Destination">
                         <font>
                            <Font size="17.0" />
                         </font>
-                        <HBox.margin>
-                           <Insets left="10.0" />
-                        </HBox.margin>
                      </Label>
-                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="117.0" text="Date">
+                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="8.0" prefHeight="17.0" prefWidth="83.0" text="Flight ID">
                         <font>
                            <Font size="17.0" />
                         </font>
-                        <HBox.margin>
-                           <Insets left="-18.0" />
-                        </HBox.margin>
                      </Label>
-                     <Label text="Seats">
+                     <Label layoutX="538.0" layoutY="8.0" text="Seats">
                         <font>
                            <Font size="17.0" />
                         </font>
-                        <HBox.margin>
-                           <Insets left="23.0" />
-                        </HBox.margin>
                      </Label>
-                     <Label text="Price">
+                     <Label layoutX="393.0" layoutY="8.0" text="Date">
                         <font>
                            <Font size="17.0" />
                         </font>
-                        <HBox.margin>
-                           <Insets left="62.0" />
-                        </HBox.margin>
                      </Label>
                   </children>
-               </HBox>
+               </AnchorPane>
                <ListView fx:id="flightsList" prefHeight="457.0" prefWidth="981.0" />
             </children>
          </VBox>
-         <VBox fx:id="profilePane" prefHeight="610.0" prefWidth="945.0" visible="false">
+         <VBox fx:id="reservedPane" prefHeight="610.0" prefWidth="945.0" visible="false">
             <children>
                <AnchorPane prefHeight="610.0" prefWidth="945.0">
                   <children>
@@ -173,42 +176,110 @@
                            </Label>
                         </children>
                      </HBox>
-                     <HBox alignment="CENTER_LEFT" layoutY="52.0" prefHeight="41.0" prefWidth="945.0" spacing="100.0">
+                     <AnchorPane layoutY="52.0" prefHeight="42.0" prefWidth="945.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="106.0" text="Destination">
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="418.0" layoutY="8.0" prefHeight="26.0" prefWidth="97.0" text="Seat Type">
                               <font>
                                  <Font size="17.0" />
                               </font>
-                              <HBox.margin>
-                                 <Insets left="10.0" />
-                              </HBox.margin>
                            </Label>
-                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="117.0" text="Date">
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="8.0" prefHeight="26.0" prefWidth="83.0" text="Flight ID">
                               <font>
                                  <Font size="17.0" />
                               </font>
-                              <HBox.margin>
-                                 <Insets left="37.0" />
-                              </HBox.margin>
                            </Label>
-                           <Label text="Price">
+                           <Label layoutX="14.0" layoutY="8.0" prefHeight="26.0" prefWidth="89.0" text="Destination">
                               <font>
                                  <Font size="17.0" />
                               </font>
-                              <HBox.margin>
-                                 <Insets left="120.0" />
-                              </HBox.margin>
+                           </Label>
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="640.0" layoutY="8.0" prefHeight="21.0" prefWidth="60.0" text="Price">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
                            </Label>
                         </children>
-                     </HBox>
+                     </AnchorPane>
                   </children>
                </AnchorPane>
             </children></VBox>
+         <VBox fx:id="bookedPane" prefHeight="610.0" prefWidth="945.0" visible="false">
+            <children>
+               <AnchorPane prefHeight="610.0" prefWidth="945.0">
+                  <children>
+                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="945.0" style="-fx-background-color: #f4faff;" text="Booked Tickets">
+                        <font>
+                           <Font name="Segoe UI Historic" size="26.0" />
+                        </font>
+                     </Label>
+                     <ListView fx:id="bookedList" layoutY="93.0" prefHeight="464.0" prefWidth="945.0" />
+                     <AnchorPane layoutY="52.0" prefHeight="41.0" prefWidth="945.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="4.0" prefHeight="35.0" prefWidth="97.0" text="Destination">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
+                           </Label>
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="570.0" layoutY="3.0" prefHeight="35.0" prefWidth="117.0" text="Seat Type">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="296.0" layoutY="9.0" text="Ticket ID">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </AnchorPane>
+                  </children>
+               </AnchorPane>
+            </children>
+         </VBox>
+         <VBox fx:id="adminFlightsPane" prefHeight="610.0" prefWidth="945.0" visible="false">
+            <children>
+               <AnchorPane prefHeight="610.0" prefWidth="945.0">
+                  <children>
+                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="945.0" style="-fx-background-color: #f4faff;" text="Administrate Flights">
+                        <font>
+                           <Font name="Segoe UI Historic" size="26.0" />
+                        </font>
+                     </Label>
+                     <ListView fx:id="adminFlightsList" layoutY="93.0" prefHeight="422.0" prefWidth="945.0" />
+                     <Button layoutX="879.0" layoutY="535.0" mnemonicParsing="false" onAction="#onAddNewFlightBtnClicked" prefHeight="42.0" prefWidth="52.0" styleClass="round-button" stylesheets="@../../../../css/styling.css" text="+">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <AnchorPane layoutY="52.0" prefHeight="41.0" prefWidth="945.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="4.0" prefHeight="35.0" prefWidth="97.0" text="Destination">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="451.0" layoutY="8.0" text="Flight ID">
+                              <font>
+                                 <Font size="17.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </AnchorPane>
+                  </children>
+               </AnchorPane>
+            </children>
+         </VBox>
       </children>
    </Pane>
-   <AnchorPane fx:id="ticketPane" layoutY="-1.0" prefHeight="587.0" prefWidth="1131.0">
+   <AnchorPane fx:id="ticketPane" layoutY="-1.0" prefHeight="587.0" prefWidth="1131.0" visible="false">
       <children>
-         <Button layoutX="290.0" layoutY="14.0" mnemonicParsing="false" onAction="#onReturnBtnClicked" prefHeight="25.0" prefWidth="19.0" style="-fx-background-color: none;">
+         <Button layoutX="190.0" layoutY="141.0" mnemonicParsing="false" onAction="#onReturnBtnClicked" prefHeight="25.0" prefWidth="19.0" style="-fx-background-color: none;">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
             <graphic>
                <ImageView fitHeight="32.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -216,41 +287,151 @@
                   </image>
                </ImageView>
             </graphic>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
          </Button>
-         <Label disable="true" layoutX="776.0" layoutY="542.0" text="Print Invoice" visible="false" />
-         <AnchorPane layoutX="372.0" layoutY="9.0" prefHeight="594.0" prefWidth="392.0" style="-fx-border-color: BLACK;">
+         <AnchorPane layoutX="199.0" layoutY="181.0" prefHeight="266.0" prefWidth="742.0" style="-fx-border-color: BLACK;">
             <children>
-               <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="135.0" text="Date Issued: 12/12/2024" />
-               <Label layoutX="82.0" layoutY="257.0" text="Reserver Name: Someone Someone">
+               <Label fx:id="ticket_reserver" layoutX="409.0" layoutY="106.0" text="Someone Someone">
                   <font>
                      <Font size="14.0" />
                   </font>
                </Label>
-               <Label layoutX="82.0" layoutY="179.0" text="Flight Destination: Moscow">
+               <Label fx:id="ticket_destination" layoutX="228.0" layoutY="59.0" text="Moscow">
                   <font>
                      <Font size="14.0" />
                   </font>
                </Label>
-               <Label layoutX="82.0" layoutY="219.0" text="Flight Date: 12/12/2024">
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-               </Label>
-               <Label layoutX="152.0" layoutY="391.0" text="Flight Status">
+               <Label layoutX="313.0" layoutY="144.0" text="Flight Status">
                   <font>
                      <Font name="System Bold" size="15.0" />
                   </font>
                </Label>
-               <Label layoutX="163.0" layoutY="453.0" text="ON TIME" textFill="#37e13a">
+               <Label fx:id="ticket_flightStatus" layoutX="409.0" layoutY="144.0" text="ON TIME" textFill="#37e13a">
                   <font>
                      <Font size="15.0" />
                   </font>
                </Label>
+               <Label layoutX="14.0" layoutY="30.0" text="Ticket ID">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Label>
+               <Label fx:id="ticket_ticketID" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="51.0" prefHeight="35.0" prefWidth="83.0" text="NY123_T09">
+                  <font>
+                     <Font name="Yu Gothic Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label layoutX="14.0" layoutY="222.0" prefHeight="30.0" prefWidth="125.0" text="AirReserve" textFill="#aba6a6">
+                  <font>
+                     <Font name="Magneto Bold" size="18.0" />
+                  </font>
+               </Label>
+               <Label fx:id="ticket_flightID" alignment="CENTER" layoutX="653.0" layoutY="222.0" prefHeight="17.0" prefWidth="75.0" text="NY123" textFill="#aba6a6">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Label>
+               <Label layoutX="647.0" layoutY="222.0" prefHeight="17.0" prefWidth="9.0" text="#">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Label>
+               <Label layoutX="107.0" layoutY="59.0" text="Flight Destination:">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="ticket_flightDate" layoutX="617.0" layoutY="59.0" text="12/12/2024">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label layoutX="538.0" layoutY="59.0" text="Flight Date:">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label layoutX="280.0" layoutY="106.0" text="Reserver Name:">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label layoutX="107.0" layoutY="32.0" text="Departure Time:" />
+               <Label layoutX="538.0" layoutY="32.0" text="Arrival Time:" />
+               <Label fx:id="ticket_flightDeparture" layoutX="205.0" layoutY="32.0" text="12:00 AM" />
+               <Label fx:id="ticket_flightArrival" layoutX="617.0" layoutY="32.0" text="1:00AM" />
             </children>
          </AnchorPane>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="newFlightPane" prefHeight="610.0" prefWidth="1131.0" visible="false">
+      <children>
+         <Button mnemonicParsing="false" onAction="#onReturnBtnClicked" prefHeight="25.0" prefWidth="19.0" style="-fx-background-color: none;">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+               <ImageView fitHeight="32.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../icons/back_button.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Label layoutX="72.0" layoutY="94.0" text="Destination">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="495.0" layoutY="93.0" text="Departure time">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="496.0" layoutY="244.0" text="Arrival time">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="893.0" layoutY="93.0" text="Number of seats">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="893.0" layoutY="242.0" text="Flight ID">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="498.0" layoutY="403.0" text="First Class Price">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="74.0" layoutY="402.0" text="Economic Class Price">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="893.0" layoutY="399.0" text="Business Class Price">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <TextField fx:id="destinationField" layoutX="73.0" layoutY="113.0" />
+         <TextField fx:id="departureField" layoutX="495.0" layoutY="116.0" />
+         <DatePicker fx:id="flightDateField" layoutX="73.0" layoutY="263.0" />
+         <Label layoutX="73.0" layoutY="243.0" text="Flight Date">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <TextField fx:id="arrivalTimeField" layoutX="495.0" layoutY="265.0" />
+         <TextField fx:id="numberSeatsField" layoutX="893.0" layoutY="114.0" />
+         <TextField fx:id="flightIDField" layoutX="894.0" layoutY="263.0" />
+         <TextField fx:id="fPriceField" layoutX="498.0" layoutY="423.0" />
+         <TextField fx:id="ePriceField" layoutX="74.0" layoutY="423.0" />
+         <TextField fx:id="bPriceField" layoutX="893.0" layoutY="420.0" />
+         <Button layoutX="490.0" layoutY="531.0" mnemonicParsing="false" onAction="#onSubmitFlightDataBtnClicked" styleClass="profile-button" stylesheets="@../../../../css/styling.css" text="Submit Flight Data" />
       </children>
    </AnchorPane>
 </AnchorPane>
