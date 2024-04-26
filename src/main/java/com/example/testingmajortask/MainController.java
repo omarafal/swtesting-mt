@@ -163,39 +163,31 @@ public class MainController {
     // functions that switch main menu panes
     @FXML
     protected void onReservedBtnClicked() throws IOException {
-        int total_fare = 0;
-
         switchPane("reserved");
         ArrayList<HBoxCell> flightsArrFile = new ArrayList<>();
-        String line;
-        BufferedReader file = new BufferedReader(new FileReader("src/main/java/com/example/testingmajortask/Database/ReservedTickets.txt"));
-        while ((line = file.readLine()) != null) {
-            String[] parts = line.split(";");
+        ArrayList<Ticket> reservedTickets = User.getReservedTickets();
 
-            if(Objects.equals(parts[0], User.name)){
-                total_fare += Integer.parseInt(parts[5]);
-
-                flightsArrFile.add(new HBoxCell(parts[1], parts[2], parts[4], Integer.parseInt(parts[5]), parts[3]));
-            }
+        Flight f;
+        for(Ticket t : reservedTickets){
+            f = new Flight(t.getFlight_id());
+            flightsArrFile.add(new HBoxCell(f.getDestination(), f.getFlight_id(), t.getSeatType(), t.getPrice(), t.getTicket_id()));
         }
+
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(flightsArrFile);
         reservedList.setItems(myObservableList);
-        totalFareLabel.setText("$" + total_fare);
+        totalFareLabel.setText("$" + User.calculateFares());
     }
 
     @FXML
     protected void onBookedBtnClicked() throws IOException{
         switchPane("booked");
         ArrayList<HBoxCell> flightsArrFile = new ArrayList<>();
-        String line;
+        ArrayList<Ticket> bookedTickets = User.getBookedTickets();
 
-        BufferedReader file = new BufferedReader(new FileReader("src/main/java/com/example/testingmajortask/Database/BookedTickets.txt"));
-        while ((line = file.readLine()) != null) {
-            String[] parts = line.split(";");
-            if(Objects.equals(parts[0], User.name)){
-                flightsArrFile.add(new HBoxCell(parts[1], parts[3], parts[4]));
-            }
+        for(Ticket t : bookedTickets){
+            flightsArrFile.add(new HBoxCell(new Flight(t.getFlight_id()).getDestination(), t.getTicket_id(), t.getSeatType()));
         }
+
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(flightsArrFile);
         bookedList.setItems(myObservableList);
     }
@@ -524,7 +516,14 @@ public class MainController {
                 ticket_flightID.setText(f.getFlight_id());
                 ticket_flightDeparture.setText(f.getDeparture_time());
                 ticket_flightArrival.setText(f.getArrival_time());
-                ticket_flightStatus.setText(f.getStatus() ? "DELAYED" : "ON TIME");
+                if(f.getStatus()){
+                    ticket_flightStatus.setText("DELAYED");
+                    ticket_flightStatus.setStyle("-fx-text-fill: #f54141");
+                }
+                else{
+                    ticket_flightStatus.setText("ON TIME");
+                    ticket_flightStatus.setStyle("-fx-text-fill: #27f127");
+                }
             });
 
             this.getChildren().addAll(this.dest, ticketLabel, this.seatType, detailsBtn);

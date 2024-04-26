@@ -30,28 +30,37 @@ public class User {
 
     public static ArrayList<Ticket> getBookedTickets() throws IOException {
         ArrayList<Ticket> booked_tickets = new ArrayList<Ticket>();
-
         // access file
-        String path = "./src/BookedTickets.txt";
+        String path = "./src/main/java/com/example/testingmajortask/Database/BookedTickets.txt";
         String line;
         BufferedReader file = new BufferedReader(new FileReader(path));
         while ((line = file.readLine()) != null) {
-            // skip first line
-            if(Objects.equals(line.split(";")[0], "flight_id")){
-                continue;
-            }
             String[] parts = line.split(";");
             if(Objects.equals(parts[0], User.name)){
-                booked_tickets.add(new Ticket(parts[1], parts[2], parts[3], Integer.parseInt(parts[4])));
+                booked_tickets.add(new Ticket(parts[2], parts[3], parts[4], Integer.parseInt(parts[5])));
             }
         }
         return booked_tickets;
     }
 
+    public static ArrayList<Ticket> getReservedTickets() throws IOException {
+        ArrayList<Ticket> reserved_tickets = new ArrayList<Ticket>();
+        String line;
+        BufferedReader file = new BufferedReader(new FileReader("src/main/java/com/example/testingmajortask/Database/ReservedTickets.txt"));
+        while ((line = file.readLine()) != null) {
+            String[] parts = line.split(";");
+
+            if(Objects.equals(parts[0], User.name)){
+                reserved_tickets.add(new Ticket(parts[2], parts[3], parts[4], Integer.parseInt(parts[5])));
+            }
+        }
+        return reserved_tickets;
+    }
+
     public static int calculateFares() throws IOException {
-        ArrayList<Ticket> booked_tickets = getBookedTickets();
+        ArrayList<Ticket> reservedTickets = getReservedTickets();
         int sum = 0;
-        for(Ticket t: booked_tickets){
+        for(Ticket t: reservedTickets){
             sum += t.getPrice();
         }
         return sum;
@@ -66,10 +75,6 @@ public class User {
         String line;
         BufferedReader file = new BufferedReader(new FileReader(path));
         while ((line = file.readLine()) != null) {
-            // skip first line
-            if(Objects.equals(line.split(";")[0], "username")){
-                continue;
-            }
             String[] parts = line.split(";");
             if(Objects.equals(parts[0], name)){
                 if(Objects.equals(password, parts[2])){

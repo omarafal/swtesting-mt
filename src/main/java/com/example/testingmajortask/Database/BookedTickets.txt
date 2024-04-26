@@ -4,3 +4,6 @@ a;Los Angeles;LA456;LA456_T:1;Economy Class;250
 a;London;LD789;LD789_T:136;Business Class;600
 a;Paris;PR345;PR345_T:121;Business Class;700
 a;Sinai;F9872F;F9872F_T:1;Economy Class;100
+Ahmad Test;se;se;se_T:20;Business Class;23
+Ahmad Test;se;se;se_T:21;Business Class;23
+Ahmad Test;se;se;se_T:0;Economy Class;23
